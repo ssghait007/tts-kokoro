@@ -1,0 +1,13 @@
+[project]
+name = "tts-kokoro"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "misaki[en]>=0.9.4",
+    "mlx-audio>=0.5.7",
+    "num2words>=0.5.14",
+    "numpy>=2.5.3",
+    "phonemizer-fork>=3.3.2",
+    "soundfile>=0.14.0",
+    "spacy>=3.8.16",
+]

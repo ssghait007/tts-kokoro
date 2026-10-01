@@ -1,0 +1,6 @@
+#!/bin/zsh
+# ksay: speak text with Kokoro (default voice af_bella) through a keep-warm background server.
+# Usage: ksay [-v VOICE] [--speed N] [-o FILE] "text" | echo text | ksay | ksay --list-voices|--status|--stop
+# One-shot mode without the server: ksay-oneshot (src/synth.py --play)
+DIR="${0:A:h}"
+exec "$DIR/.venv/bin/python" "$DIR/src/client.py" "$@"

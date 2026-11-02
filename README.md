@@ -111,6 +111,31 @@ uv sync
 alias ksay="/path/to/tts-kokoro/ksay"   # add to ~/.zshrc
 ```
 
+## Yoda mode 🐸
+
+```bash
+ksay --yoda "Strong with the code, you are."
+ksay --yoda --pause 1.5 "Longer pauses, you want."
+```
+
+Kokoro has no Yoda voice. So we fake one with `ffmpeg`.
+
+`am_michael`, pitched up, slowed down, with a 48 Hz tremolo for the gravel.
+
+Each phrase renders separately and is joined with real silence. Kokoro ignores `...`.
+
+Tuned against Yoda's lines in a film clip:
+
+| | Yoda | `--yoda` |
+|---|---|---|
+| Syllables/s while talking | 2.05 | 2.03 |
+| Time spent pausing | ~17% | 19% |
+| Typical pause | 0.2–0.6 s | 0.2–0.6 s |
+
+Write the words in Yoda order yourself. That does half the work.
+
+Not matched: his big pitch swoops. A filter can't do that.
+
 ## The keep-warm trick ⚡
 
 Every `ksay` used to start from scratch.

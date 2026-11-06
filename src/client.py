@@ -84,7 +84,8 @@ def ensure_server() -> bool:
     except OSError:
         pass
     SOCK.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
-    env = dict(os.environ, PYTHONWARNINGS="ignore", HF_HUB_DISABLE_PROGRESS_BARS="1", TOKENIZERS_PARALLELISM="false")
+    env = dict(os.environ, PYTHONWARNINGS="ignore", HF_HUB_DISABLE_PROGRESS_BARS="1", TOKENIZERS_PARALLELISM="false",
+               HF_HUB_OFFLINE="1")  # model is cached; a hung huggingface.co check stalls cold start past the 30 s wait
     subprocess.Popen([str(ROOT / ".venv/bin/python"), str(ROOT / "src/server.py")], stdout=open(LOG, "a"), stderr=subprocess.STDOUT,
                      stdin=subprocess.DEVNULL, start_new_session=True, env=env)
     for _ in range(300):  # up to 30 s
